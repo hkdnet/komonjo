@@ -1,5 +1,11 @@
 require 'sinatra'
+require 'slim'
 
-get '/' do
-  'hello'
+module Komonjo
+  # routing
+  class App < Sinatra::Base
+    get '/' do
+      slim :index
+    end
+  end
 end
