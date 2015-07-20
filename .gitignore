@@ -65,4 +65,4 @@ build/
 .rvmrc
 
 # application ignoring files
-config.json
+.env
