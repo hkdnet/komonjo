@@ -8,8 +8,8 @@ unless api_token
 EOS
 end
 
-describe Togelack::Adapter::SlackAdapter do
-  r = Togelack::Adapter::SlackAdapter.new(api_token)
+describe Komonjo::Adapter::SlackAdapter do
+  r = Komonjo::Adapter::SlackAdapter.new(api_token)
   describe '#initialize' do
     it 'should set api_token' do
       r.api_token.must_equal api_token

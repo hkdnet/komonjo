@@ -1,6 +1,6 @@
 require 'slack'
 
-module Togelack
+module Komonjo
   module Adapter
     # Adapter for slack
     class SlackAdapter
