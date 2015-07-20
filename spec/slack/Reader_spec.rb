@@ -19,5 +19,4 @@ describe Togelack::Slack::Reader do
       r.api_token.must_equal api_token
     end
   end
-
 end
