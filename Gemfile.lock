@@ -9,6 +9,7 @@ GEM
     faye-websocket (0.9.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    mem (0.1.5)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     rack (1.6.4)
@@ -32,8 +33,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  mem
   sinatra (= 1.4.6)
-  slack-api
+  slack-api (= 1.1.6)
 
 BUNDLED WITH
    1.10.3
