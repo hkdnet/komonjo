@@ -1,13 +1,12 @@
 require_relative '../spec_helper'
 
-api_token = ENV["TEST_API_TOKEN"]
+api_token = ENV['TEST_API_TOKEN']
 unless api_token
-  raise <<EOS
+  fail <<EOS
     Please set api token before testing.
     The token should be written in .env at project root.
 EOS
 end
-
 
 describe Togelack::Adapter::SlackAdapter do
   r = Togelack::Adapter::SlackAdapter.new(api_token)
