@@ -4,7 +4,13 @@ require 'dotenv'
 Dotenv.load
 
 api_token = ENV["TEST_API_TOKEN"]
-raise 'Please set api token before testing. The token should be written in .env at project root.' unless api_token
+unless api_token
+  raise <<EOS
+    Please set api token before testing.
+    The token should be written in .env at project root.
+EOS
+end
+
 
 describe Togelack::Slack::Reader do
   r = Togelack::Slack::Reader.new(api_token)
