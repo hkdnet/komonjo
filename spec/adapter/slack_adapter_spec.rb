@@ -1,7 +1,4 @@
 require_relative '../spec_helper'
-require_relative '../../lib/adapter/slack_adapter'
-require 'dotenv'
-Dotenv.load
 
 api_token = ENV["TEST_API_TOKEN"]
 unless api_token
