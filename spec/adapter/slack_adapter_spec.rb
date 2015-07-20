@@ -1,5 +1,5 @@
 require_relative '../spec_helper'
-require_relative '../../lib/slack/reader'
+require_relative '../../lib/adapter/slack_adapter'
 require 'dotenv'
 Dotenv.load
 
@@ -12,8 +12,8 @@ EOS
 end
 
 
-describe Togelack::Slack::Reader do
-  r = Togelack::Slack::Reader.new(api_token)
+describe Togelack::Adapter::SlackAdapter do
+  r = Togelack::Adapter::SlackAdapter.new(api_token)
   describe '#initialize' do
     it 'should set api_token' do
       r.api_token.must_equal api_token
