@@ -1,15 +1,9 @@
-doctype html
-html
-  head
-    title Slim Examples
-    meta name="keywords" content="template language"
-    /meta name="author" content=author
+include header
 
-  body
-    h1 Komonjo
+body
+  h1 Komonjo
+  ul#content
+    - @posts["messages"].each do |message|
+      include message
 
-    #content
-      | contents
-
-    div id="footer"
-      | Copyright © 2015-#{Time.now.year} hkdnet
+include footer
