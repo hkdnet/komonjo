@@ -66,3 +66,6 @@ build/
 
 # application ignoring files
 .env
+
+# compass
+.sass-cache
