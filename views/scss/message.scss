@@ -1,0 +1,22 @@
+$background-color: #EEE;
+$icon-size: 48px;
+
+.message {
+  list-style-type: none;
+  background-color:$background-color;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  box-shadow: rgba(255, 255, 255, .3) 0 1px 0;
+
+  .message-header {
+    font-weight: bold;
+    font-size: 80%;
+  }
+  .message-icon {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: top;
+}

@@ -1,3 +1,8 @@
 li.message
-  .user = message["user"] || message["username"]
-  .text = message["text"]
+  .message-icon.table-cell
+    img src="http://placeimg.com/48/48/#{%w(people animals arch tech nature).sample}"
+  .table-cell
+    .message-header
+      .message-username.table-cell = message["user"] || message["username"]
+      .message-timestamp.table-cell = message["ts"]
+    .message-text = message["text"]
