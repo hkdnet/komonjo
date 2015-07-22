@@ -6,8 +6,9 @@ module Komonjo
         def chat_logs
           {
             'messages' => [
-              { 'text' => 'hoge', 'username' => 'bot', 'type' => 'message',
-                'subtype' => 'bot_message', 'ts' => '1437406342.000007' },
+              { 'text' => '=-=-= this is dummy data =-=-=', 'username' => 'bot',
+                'type' => 'message', 'subtype' => 'bot_message',
+                'ts' => '1437406342.000007' },
               { 'type' => 'message', 'user' => 'User01', 'text' => 'ほう',
                 'ts' => '1437405883.000006' },
               { 'text' => 'TEST from slack-api', 'username' => 'bot',
