@@ -1,9 +1,13 @@
-include header
+doctype html
+html
+  head
+    title Komonjo
+    include _meta
 
 body
   h1 Komonjo
   ul#content
     - @posts["messages"].each do |message|
-      include message
+      include _message
 
-include footer
+include _footer
