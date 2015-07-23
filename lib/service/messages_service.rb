@@ -3,6 +3,7 @@ require_relative '../gateway/message_gateway'
 
 module Komonjo
   module Service
+    # A service for merge channel log and user information
     class MessagesService
       def initialize(api_token)
         @api_token = api_token
