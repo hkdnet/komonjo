@@ -11,10 +11,10 @@ module Komonjo
         @history.map do |h|
           return h unless h['user']
           user = user h['user']
-          p h
-          h['username'] = user['name']
-          h['icon_url'] = user['profile']['image_48']
-          h
+          h.tap do |hist|
+            hist['username'] = user['name']
+            hist['icon_url'] = user['profile']['image_48']
+          end
         end
       end
 
