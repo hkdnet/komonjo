@@ -33,6 +33,18 @@ module Komonjo
         ret
       end
 
+      def user_info(user_id)
+        ret = Slack.users_info(user: user_id)
+        fail 'error' unless ret['ok']
+        ret['user']
+      end
+
+      def user_list
+        ret = Slack.users_list
+        fail 'error' unless ret['ok']
+        ret['members']
+      end
+
       private
 
       def auth_test
