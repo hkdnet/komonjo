@@ -13,6 +13,32 @@ module Komonjo
         fail 'connection error' unless auth_test
       end
 
+      def channels_history(channel_name)
+        channel_id = channel_id channel_name
+        ret = Slack.channels_history(channel: channel_id)
+        fail 'error' unless ret['ok']
+        ret['messages']
+      end
+
+      def users_info(user_id)
+        ret = Slack.users_info(user: user_id)
+        fail 'error' unless ret['ok']
+        ret['user']
+      end
+
+      def users_list
+        ret = Slack.users_list
+        fail 'error' unless ret['ok']
+        ret['members']
+      end
+
+      private
+
+      def auth_test
+        ret = Slack.auth_test
+        ret['ok']
+      end
+
       def channel_id(channel_name)
         channel_list = Slack.channels_list
         fail 'error' unless channel_list['ok']
@@ -24,32 +50,6 @@ module Komonjo
         else
           target_channel.first['id']
         end
-      end
-
-      def all_logs_at(channel_name)
-        channel_id = channel_id channel_name
-        ret = Slack.channels_history(channel: channel_id)
-        fail 'error' unless ret['ok']
-        ret['messages']
-      end
-
-      def user_info(user_id)
-        ret = Slack.users_info(user: user_id)
-        fail 'error' unless ret['ok']
-        ret['user']
-      end
-
-      def user_list
-        ret = Slack.users_list
-        fail 'error' unless ret['ok']
-        ret['members']
-      end
-
-      private
-
-      def auth_test
-        ret = Slack.auth_test
-        ret['ok']
       end
     end
   end
