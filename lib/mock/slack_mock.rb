@@ -1,6 +1,6 @@
 module Komonjo
   module Mock
-    # Mock for SlackAdapter
+    # Mock for SlackConnection
     class SlackMock
       class << self
         def chat_logs

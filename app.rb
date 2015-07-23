@@ -4,7 +4,7 @@ require 'slim'
 require 'slim/include'
 require 'compass'
 require_relative 'lib/mock/slack_mock'
-require_relative 'lib/adapter/slack_adapter'
+require_relative 'lib/connection/slack_connection'
 
 module Komonjo
   # routing
@@ -33,8 +33,8 @@ module Komonjo
     post '/' do
       @api_token = params[:api_token]
       @channel_name = params[:channel_name]
-      adapter = Komonjo::Adapter::SlackAdapter.new @api_token
-      @posts = adapter.all_logs_at @channel_name
+      connection = Komonjo::Connection::SlackConnection.new @api_token
+      @posts = connection.all_logs_at @channel_name
       slim :index
     end
   end

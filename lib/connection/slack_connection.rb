@@ -1,9 +1,9 @@
 require 'slack'
 
 module Komonjo
-  module Adapter
-    # Adapter for slack
-    class SlackAdapter
+  module Connection
+    # Connection for slack
+    class SlackConnection
       attr_reader :api_token
       def initialize(api_token)
         @api_token = api_token
