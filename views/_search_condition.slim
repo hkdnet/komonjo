@@ -1,0 +1,15 @@
+form.search_condition action="/" method="post"
+  .conditions.inline-block
+    .api_token
+      label for="api_token"
+        .inline-block api_token
+      input type="password" name="api_token" value=(@api_token || "")
+    .channel_name
+      label for="channel_name"
+        .inline-block channel_name
+      input name="channel_name" value=(@channel_name || "")
+  .buttons.inline-block
+    button type="submit"
+      | submit
+    button type="reset"
+      | reset

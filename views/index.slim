@@ -3,10 +3,13 @@ html
   head
     title Komonjo
     include _meta
+    link rel="stylesheet" href="css/base.css" type="text/css"
     link rel="stylesheet" href="css/message.css" type="text/css"
+    link rel="stylesheet" href="css/search_condition.css" type="text/css"
 
 body
   h1 Komonjo
+  include _search_condition
   ul#content
     - @posts["messages"].each do |message|
       include _message
