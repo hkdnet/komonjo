@@ -11,7 +11,7 @@ body
   h1 Komonjo
   include _search_condition
   ul#content
-    - @posts["messages"].each do |message|
+    - @messages.each do |message|
       include _message
 
 include _footer

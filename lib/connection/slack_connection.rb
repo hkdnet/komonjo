@@ -30,7 +30,7 @@ module Komonjo
         channel_id = channel_id channel_name
         ret = Slack.channels_history(channel: channel_id)
         fail 'error' unless ret['ok']
-        ret
+        ret['messages']
       end
 
       def user_info(user_id)

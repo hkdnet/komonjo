@@ -5,6 +5,7 @@ require 'slim/include'
 require 'compass'
 require_relative 'lib/mock/slack_mock'
 require_relative 'lib/connection/slack_connection'
+require_relative 'lib/service/messages_service'
 
 module Komonjo
   # routing
@@ -26,15 +27,15 @@ module Komonjo
 
     get '/' do
       @api_token = ENV['TEST_API_TOKEN'] || ''
-      @posts = Komonjo::Mock::SlackMock.chat_logs
+      @messages = Komonjo::Mock::SlackMock.chat_logs
       slim :index
     end
 
     post '/' do
       @api_token = params[:api_token]
       @channel_name = params[:channel_name]
-      connection = Komonjo::Connection::SlackConnection.new @api_token
-      @posts = connection.all_logs_at @channel_name
+      service = Komonjo::Service::MessagesService.new(@api_token)
+      @messages = service.messages @channel_name
       slim :index
     end
   end

@@ -1,9 +1,9 @@
 li.message
   .message-icon.table-cell
-    img src="http://placeimg.com/48/48/#{%w(people animals arch tech nature).sample}"
+    img src=message["icon_url"]
   .table-cell
     .message-header
-      .message-username.table-cell = message["user"] || message["username"]
+      .message-username.table-cell = message["username"]
       - t = Time.at(message["ts"].to_f)
       .message-timestamp.table-cell = t.strftime("%Y-%m-%d %H:%M:%S")
       end
