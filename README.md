@@ -1,7 +1,7 @@
 [WIP]Komonjo
 ====
 
-Overview
+## Overview
 
 Komonjo helps you to manage your slack logs!
 
