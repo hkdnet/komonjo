@@ -5,7 +5,14 @@
   display: table-cell;
   vertical-align: top;
 }
+.scroll {
+  overflow: scroll;
+}
 body {
   width: 80%;
   background: url('images/paper.png');
+}
+.messages {
+  width: 35%;
+  height:600px;
 }

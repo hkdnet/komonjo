@@ -10,8 +10,17 @@ html
 body
   h1 Komonjo
   include _search_condition
-  ul#content
-    - @messages.each do |message|
-      include _message
+  #src.messages.inline-block.scroll
+    ul
+      - @messages.each do |message|
+        include _message
+  .inline-block
+    button#add
+      | ->
+    button#remove = '<-'
+  #dst.messages.inline-block.scroll
+    ul
+      - %w(hoge fuga piyo).each do |message|
+        li = message
 
 include _footer
