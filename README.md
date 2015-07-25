@@ -25,6 +25,7 @@ So all you have to do is `bundle install`.
   * dotenv
   * slim
   * compass
+  * coffee-script
 * Slack api_token
 
 ## Usage

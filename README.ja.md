@@ -25,6 +25,7 @@ Ruby製なので以下のgemが必要です。これらは`bundle install`で全
   * dotenv
   * slim
   * compass
+  * coffee-script
 * Slack api_token
 
 ## Usage
