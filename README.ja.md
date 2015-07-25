@@ -29,10 +29,7 @@ Ruby製なので以下のgemが必要です。これらは`bundle install`で全
 
 ## Usage
 
-現在のところ、ローカル環境にサーバーを立てて使うしかありません。  
-近いうちにWebサービスとして提供される予定です。
-
-以下にローカルでの使い方を記述します。
+ローカル環境にサーバーを立てて使うことになります。
 
 まず、サーバを立ち上げ`localhost:9292`にアクセスします。  
 サーバは`rackup`で立ち上がります。  
@@ -61,8 +58,8 @@ $ bundle install
 
 ## Contribution
 
-Anything is welcome :+1:  
-e.g. fix typo, fix bugs, refactoring...
+typo指摘、バグ修正、リファクタリング、なんでも歓迎です。 :+1:  
+README.mdの英語を直してくれるととてもよろこびます:moyai:
 
 ## Licence
 

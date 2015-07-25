@@ -28,10 +28,6 @@ So all you have to do is `bundle install`.
 
 ## Usage
 
-Now, you have to run your own server.  
-We'll serve Komonjo as a web service.  
-Its launch date is not fixed yet, sorry.
-
 First, setup server and access to `localhost:9292`
 
 ```bash
