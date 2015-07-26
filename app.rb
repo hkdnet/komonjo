@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'slim'
 require 'slim/include'
 require 'compass'
+require 'coffee-script'
 require_relative 'lib/mock/slack_mock'
 require_relative 'lib/connection/slack_connection'
 require_relative 'lib/service/messages_service'
@@ -23,6 +24,10 @@ module Komonjo
 
     get '/css/:name.css' do
       scss :"scss/#{params[:name]}"
+    end
+
+    get '/scripts/:name.js' do
+      coffee :"coffee/#{params[:name]}"
     end
 
     get '/' do
