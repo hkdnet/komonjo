@@ -9,7 +9,7 @@ module Komonjo
 
       def messages
         @history.map do |h|
-          return h unless h['user']
+          next h unless h['user']
           user = find_user h['user']
           h.tap do |hist|
             hist['username'] = user['name']
