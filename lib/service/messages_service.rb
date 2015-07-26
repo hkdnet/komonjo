@@ -13,8 +13,8 @@ module Komonjo
         connection = Komonjo::Connection::SlackConnection.new @api_token
         history = connection.channels_history channel_name
         users = connection.users_list
-        service = Komonjo::Gateway::MessagesGateway.new history, users
-        service.messages
+        gateway = Komonjo::Gateway::MessagesGateway.new history, users
+        gateway.messages
       end
     end
   end
