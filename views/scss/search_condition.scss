@@ -24,4 +24,7 @@ form.search_condition {
     height: $font-size * 3;
     line-height: $font-size * 3;
   }
+  button.disabled {
+    color: gray;
+  }
 }

@@ -6,21 +6,25 @@ html
     link rel="stylesheet" href="css/base.css" type="text/css"
     link rel="stylesheet" href="css/message.css" type="text/css"
     link rel="stylesheet" href="css/search_condition.css" type="text/css"
+    link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    script src="//code.jquery.com/jquery-2.1.4.min.js" async
+    script src="scripts/index.js" defer
+
 
 body
   h1 Komonjo
   include _search_condition
-  #src.messages.inline-block.scroll
-    ul
-      - @messages.each do |message|
-        include _message
-  .inline-block
-    button#add
-      | ->
-    button#remove = '<-'
-  #dst.messages.inline-block.scroll
-    ul
-      - %w(hoge fuga piyo).each do |message|
-        li = message
+  #editor
+    #src.messages.inline-block.scroll
+      ul
+        - @messages.each do |message|
+          include _message
+    #console.inline-block
+      button#add
+        i.fa.fa-arrow-right
+      button#remove
+        i.fa.fa-arrow-left
+    #dst.messages.inline-block.scroll
+      ul
 
 include _footer

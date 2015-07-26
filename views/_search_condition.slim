@@ -3,13 +3,13 @@ form.search_condition action="/" method="post"
     .api_token
       label for="api_token"
         .inline-block api_token
-      input type="password" name="api_token" value=(@api_token || "")
+      input#api_token type="password" name="api_token" value=(@api_token || "")
     .channel_name
       label for="channel_name"
         .inline-block channel_name
-      input name="channel_name" value=(@channel_name || "")
+      input#channel_name name="channel_name" value=(@channel_name || "")
   .buttons.inline-block
-    button type="submit"
-      | submit
+    button#submit type="submit"
+      | search
     button type="reset"
       | reset
