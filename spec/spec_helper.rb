@@ -1,9 +1,18 @@
 require 'minitest/autorun'
 require 'dotenv'
-Dir[File.expand_path('../../lib/connection', __FILE__) << '/*.rb'].each do |f|
-  require f
-end
-Dir[File.expand_path('../../lib/model', __FILE__) << '/*.rb'].each do |f|
-  require f
-end
+require 'minitest/power_assert'
+
 Dotenv.load
+
+libs = %w(connection gateway mock model)
+libs.each do |ns|
+  Dir[File.expand_path("../../lib/#{ns}", __FILE__) << '/*.rb'].each do |f|
+    require f
+  end
+end
+
+libs.each do |ns|
+  Dir[File.expand_path("../#{ns}", __FILE__) << '/*_test.rb'].each do |f|
+    require f
+  end
+end
