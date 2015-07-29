@@ -18,6 +18,8 @@ module Komonjo
         end
       end
 
+      private
+
       def find_user(user_id)
         user = @users.find { |u| u['id'] == user_id }
         fail "unknown user #{h['user']}" unless user
