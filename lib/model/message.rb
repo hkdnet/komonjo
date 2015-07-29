@@ -18,6 +18,14 @@ module Komonjo
           end
         end
       end
+      # provide square bracket access
+      def [](key)
+        send(key)
+      end
+
+      def []=(key, val)
+        send(key, val)
+      end
     end
   end
 end

@@ -10,11 +10,15 @@ module Komonjo
       def messages
         @history.map do |h|
           next h unless h['user']
+=begin
           user = find_user h['user']
           h.tap do |hist|
             hist['username'] = user['name']
             hist['icon_url'] = user['profile']['image_48']
           end
+=end
+        m = Komonjo::Model::Message.create(h)
+        m.user = find_user h['user']
         end
       end
 
