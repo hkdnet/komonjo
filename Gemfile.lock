@@ -19,6 +19,7 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
+    docile (1.1.5)
     dotenv (2.0.2)
     eventmachine (1.0.7)
     execjs (2.5.2)
@@ -30,6 +31,7 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     ffi (1.9.9)
+    json (1.8.3)
     minitest (5.7.0)
     minitest-power_assert (0.2.0)
       minitest
@@ -46,6 +48,11 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     sass (3.4.14)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -79,6 +86,7 @@ DEPENDENCIES
   compass
   dotenv
   minitest-power_assert
+  simplecov
   sinatra (= 1.4.6)
   sinatra-contrib
   slack-api (= 1.1.6)
