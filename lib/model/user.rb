@@ -16,7 +16,7 @@ module Komonjo
             hash.each do |key, val|
               u.send(key.to_s + '=', val) if ATTRS_WITHOUT_NEST.include?(key)
             end
-            @profile = Profile.create(hash['profile']) if hash['profile']
+            u.profile = Profile.create(hash[:profile]) if hash[:profile]
           end
         end
       end

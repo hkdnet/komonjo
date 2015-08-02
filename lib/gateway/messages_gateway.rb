@@ -8,6 +8,15 @@ module Komonjo
       def initialize(history, users)
         @history = history
         @users = users
+        @history = @history.map do |h|
+          Hash[h.map{ |k, v| [k.to_sym, v] }]
+        end
+        @users = @users.map do |h|
+          Hash[h.map{ |k, v| [k.to_sym, v] }]
+        end
+        @users.each do |u|
+          u[:profile] = Hash[u[:profile].map{ |k, v| [k.to_sym, v] }]
+        end
       end
 
       def messages
