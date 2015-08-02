@@ -21,6 +21,16 @@ module Komonjo
              'text' => '<@User01|Username01> has joined the channel',
              'ts' => '1437405457.000002', 'username' => 'User01' }]
         end
+
+        def users
+          [{ id: 'id001', name: 'name001', deleted: false },
+           { id: 'id002', name: 'name002', deleted: false }]
+        end
+
+        def history(channel_name)
+          [{ type: 'message', user: 'id001', channel: channel_name },
+           { type: 'message', user: 'id002', channel: channel_name }]
+        end
       end
     end
   end
