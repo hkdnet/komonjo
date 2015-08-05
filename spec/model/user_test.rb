@@ -34,6 +34,15 @@ module KomonjoTest
             end
           end
         end
+        describe '[]' do
+          it 'provides attr access' do
+            u = Komonjo::Model::User.create({})
+            r = Random.new
+            u.id = "random_id_#{r.rand(1000)}"
+            assert { u.id == u['id'] }
+            assert { u.id == u[:id] }
+          end
+        end
       end
     end
   end
