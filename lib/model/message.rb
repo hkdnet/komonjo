@@ -24,7 +24,7 @@ module Komonjo
       end
 
       def []=(key, val)
-        send(key, val)
+        send("#{key}=", val)
       end
     end
   end
