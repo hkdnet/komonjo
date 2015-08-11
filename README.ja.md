@@ -19,13 +19,7 @@ Ruby製なので以下のgemが必要です。これらは`bundle install`で全
 また、Slackのログ取得用に`api_token`が必要です。取得方法は後述します。  
 
 * Ruby
-  * sinatra
-  * sinatra-contrib
-  + slack-api
-  * dotenv
-  * slim
-  * compass
-  * coffee-script
+* Bundler
 * Slack api_token
 
 ## Usage
