@@ -6,8 +6,7 @@ module Komonjo
     # Merge history and users
     class MessagesGateway
       def initialize(history, users)
-        @history = history
-        @history = @history.map { |h| Hash[h.map { |k, v| [k.to_sym, v] }] }
+        @history = history.map { |h| Hash[h.map { |k, v| [k.to_sym, v] }] }
         @users = users.map do |h|
           ret = Hash[h.map { |k, v| [k.to_sym, v] }]
           ret[:profile] = Hash[ret[:profile].map { |k, v| [k.to_sym, v] }]
