@@ -7,9 +7,8 @@ module Komonjo
     class MessagesGateway
       def initialize(history, users)
         @history = history
-        @users = users
         @history = @history.map { |h| Hash[h.map { |k, v| [k.to_sym, v] }] }
-        @users = @users.map do |h|
+        @users = users.map do |h|
           ret = Hash[h.map { |k, v| [k.to_sym, v] }]
           ret[:profile] = Hash[ret[:profile].map { |k, v| [k.to_sym, v] }]
           ret
