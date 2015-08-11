@@ -33,26 +33,6 @@ module KomonjoTest
             end
           end
         end
-        describe '[]' do
-          r = Random.new
-          it 'provide [key] reader' do
-            m = Komonjo::Model::Message.create({})
-            m.type = r.rand(1000)
-            assert { m.type == m['type'] }
-            assert { m.type == m[:type] }
-          end
-
-          it 'provide [key]= writer' do
-            m = Komonjo::Model::Message.create({})
-            m.type = nil
-            val = r.rand(1000)
-            m['type'] = val
-            assert { m.type == val }
-            m.type = nil
-            m[:type] = val
-            assert { m.type == val }
-          end
-        end
       end
     end
   end
