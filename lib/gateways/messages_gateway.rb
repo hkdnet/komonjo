@@ -1,5 +1,5 @@
-require_relative '../model/user'
-require_relative '../model/message'
+require_relative '../models/user'
+require_relative '../models/message'
 
 module Komonjo
   module Gateway
