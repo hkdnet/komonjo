@@ -43,8 +43,8 @@ module Komonjo
       def channel_id(channel_name)
         channel_list = Slack.channels_list
         fail 'error' unless channel_list['ok']
-        target_channel = channel_list['channels'].select do |c|
-          c['name'] == channel_name
+        target_channel = channel_list['channels'].select do |e|
+          e['name'] == channel_name
         end
         if target_channel.empty?
           fail "unknown channel name: #{channel_name}"

@@ -33,9 +33,9 @@ module Komonjo
           users = Komonjo::Mock::SlackMock.users
           history = Komonjo::Mock::SlackMock.history 'test'
           g = Komonjo::Gateway::MessagesGateway.new history, users
-          g.messages.each do |m|
-            assert { m.class == Komonjo::Model::Message }
-            assert { m.user.class == Komonjo::Model::User }
+          g.messages.each do |e|
+            assert { e.class == Komonjo::Model::Message }
+            assert { e.user.class == Komonjo::Model::User }
           end
         end
       end

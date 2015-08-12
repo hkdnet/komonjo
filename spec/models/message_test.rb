@@ -13,23 +13,23 @@ module KomonjoTest
         describe 'attributes' do
           ATTRS = %i(type channel user text ts edited subtype)
           r = Random.new
-          ATTRS.each do |a|
-            it "should be able to read attr #{a}" do
+          ATTRS.each do |e|
+            it "should be able to read attr #{e}" do
               h = {}
               val = r.rand(1000).to_s
-              h[a] = val
+              h[e] = val
               m = Komonjo::Model::Message.create(h)
-              fail "no method: #{a}" unless m.respond_to? a.to_s
-              m.send(a).must_equal val
+              fail "no method: #{e}" unless m.respond_to? e.to_s
+              m.send(e).must_equal val
             end
 
-            it "should be able to write attr #{a}" do
+            it "should be able to write attr #{e}" do
               h = {}
               m = Komonjo::Model::Message.create(h)
-              fail "no method: #{a}" unless m.respond_to?("#{a}=")
+              fail "no method: #{e}" unless m.respond_to?("#{e}=")
               val = r.rand(1000)
-              m.send("#{a}=", val)
-              m.send(a).must_equal val
+              m.send("#{e}=", val)
+              m.send(e).must_equal val
             end
           end
         end

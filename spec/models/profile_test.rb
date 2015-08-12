@@ -14,23 +14,23 @@ module KomonjoTest
           ATTRS = %i(first_name last_name real_name email skype phone image_24
                      image_32 image_48 image_72 image_192 )
           r = Random.new
-          ATTRS.each do |a|
-            it "should be able to read attr #{a}" do
+          ATTRS.each do |e|
+            it "should be able to read attr #{e}" do
               h = {}
               val = r.rand(1000).to_s
-              h[a] = val
+              h[e] = val
               u = Komonjo::Model::Profile.create(h)
-              fail "no method: #{a}" unless u.respond_to? a.to_s
-              u.send(a).must_equal val
+              fail "no method: #{e}" unless u.respond_to? e.to_s
+              u.send(e).must_equal val
             end
 
-            it "should be able to write attr #{a}" do
+            it "should be able to write attr #{e}" do
               h = {}
               u = Komonjo::Model::Profile.create(h)
-              fail "no method: #{a}" unless u.respond_to?("#{a}=")
+              fail "no method: #{e}" unless u.respond_to?("#{e}=")
               val = r.rand(1000)
-              u.send("#{a}=", val)
-              u.send(a).must_equal val
+              u.send("#{e}=", val)
+              u.send(e).must_equal val
             end
           end
         end
