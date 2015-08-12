@@ -4,17 +4,12 @@ module Komonjo
   module Model
     # slacke Message
     class Message
-      ATTRS_WITHOUT_NEST = %i(type channel user text ts edited subtype)
-      ATTRS_WITHOUT_NEST.each do |at|
-        attr_accessor at
-      end
+      attr_accessor :type, :channel, :user, :text, :ts, :edited, :subtype
 
       class << self
         def create(hash)
-          new.tap do |p|
-            hash.each do |key, val|
-              p.send(key.to_s + '=', val) if ATTRS_WITHOUT_NEST.include?(key)
-            end
+          new.tap do |e|
+            hash.each { |k, v| e.instance_variable_set("@#{k}", v) }
           end
         end
       end
