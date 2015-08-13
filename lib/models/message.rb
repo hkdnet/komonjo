@@ -6,11 +6,9 @@ module Komonjo
     class Message
       attr_accessor :type, :channel, :user, :text, :ts, :edited, :subtype
 
-      class << self
-        def create(hash)
-          new.tap do |e|
-            hash.each { |k, v| e.instance_variable_set("@#{k}", v) }
-          end
+      def self.create(hash)
+        new.tap do |e|
+          hash.each { |k, v| e.instance_variable_set("@#{k}", v) }
         end
       end
     end
