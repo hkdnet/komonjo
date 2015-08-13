@@ -1,15 +1,17 @@
 require_relative '../models/user'
 require_relative '../models/message'
+require_relative '../extensions/hash_extensions'
 
 module Komonjo
   module Gateway
     # Merge history and users
     class MessagesGateway
+      using HashExtensions
       def initialize(history, users)
-        @history = history.map { |e| Hash[e.map { |k, v| [k.to_sym, v] }] }
+        @history = history.map { |e| Hash[e.symbolize_keys] }
         @users = users.map do |e|
-          ret = Hash[e.map { |k, v| [k.to_sym, v] }]
-          ret[:profile] = Hash[ret[:profile].map { |k, v| [k.to_sym, v] }]
+          ret = Hash[e.symbolize_keys]
+          ret[:profile] = Hash[ret[:profile].symbolize_keys]
           ret
         end
       end
