@@ -33,6 +33,43 @@ module KomonjoTest
             end
           end
         end
+        describe 'markdowns' do
+          describe 'to_markdown' do
+            ts = Time.local(2006, 1, 2, 15, 4, 6)
+            u = Komonjo::Model::User.create(
+              name: 'test01',
+              profile: {
+                image_48: 'icon_url' })
+            m = Komonjo::Model::Message.create(ts: ts, text: 'test', user: u)
+
+            it 'should return non-nested icon' do
+              m.icon_markdown.must_equal "* ![test01 icon](icon_url)\n"
+            end
+
+            it 'should return nested name' do
+              m.name_markdown.must_equal "\t- test01\n"
+            end
+
+            it 'should return nested ts' do
+              m.ts_markdown
+                .must_equal "\t- 2006-01-02 15:04:06\n"
+            end
+
+            it 'should return nested text' do
+              m.text_markdown
+                .must_equal "\t- test\n"
+            end
+
+            it 'should be equal to all markdowns' do
+              m.to_markdown.must_equal [
+                m.icon_markdown,
+                m.name_markdown,
+                m.ts_markdown,
+                m.text_markdown
+              ].join
+            end
+          end
+        end
       end
     end
   end
