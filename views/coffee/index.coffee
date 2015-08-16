@@ -43,3 +43,9 @@ $ ->
             .addClass('message placeholder')
             .text('select messages and push add button')
     .trigger 'Komonjo.change'
+
+  $('#show').on 'click', () ->
+    msg = ''
+    $('#dst li').each ()->
+        msg += $(this).attr('data-md')
+    $('#markdown').val(msg)
