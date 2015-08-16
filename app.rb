@@ -41,18 +41,7 @@ module Komonjo
       @channel_name = params[:channel_name]
       service = Komonjo::Service::MessagesService.new(@api_token)
       @messages = service.messages @channel_name
-      @messages.each { |e| puts e.to_markdown }
       slim :index
-    end
-
-    post '/md' do
-      @api_token = params[:api_token]
-      @channel_name = params[:channel_name]
-      service = Komonjo::Service::MessagesService.new(@api_token)
-      @messages = service.messages @channel_name
-      ret = @messages.take.to_markdown
-      p ret
-      ret
     end
   end
 end

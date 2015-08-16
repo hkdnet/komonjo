@@ -4,7 +4,6 @@ li.message
   .table-cell
     .message-header
       .message-username.table-cell = message.user.name
-      - t = Time.at(message.ts.to_f)
-      .message-timestamp.table-cell = t.strftime("%Y-%m-%d %H:%M:%S")
+      .message-timestamp.table-cell = message.timestamp
       end
     .message-text = message.text
