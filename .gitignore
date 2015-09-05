@@ -69,3 +69,6 @@ build/
 
 # compass
 .sass-cache
+
+# vagrant
+.vagrant
