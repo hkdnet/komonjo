@@ -46,6 +46,21 @@ $ ->
 
   $('#show').on 'click', () ->
     msg = ''
-    $('#dst li').each ()->
-        msg += $(this).attr('data-md')
-    $('#markdown').val(msg)
+    $messages = $('#dst li')
+    return false if $messages.find('img').length == 0
+    $messages.each ()->
+      msg += $(this).attr('data-md')
+    $markdown = $('#markdown') || $('<textarea>').attr('id', 'markdown')
+    $markdown.val(msg)
+    $('#viewer').dialog({
+      width: Math.min(window.innerWidth * 0.8, 600),
+      height: Math.min(window.innerHeight * 0.8, 400)
+    })
+    $('#viewer').dialog("open")
+    false
+
+  $('#viewer').dialog({
+    title: 'selected messages',
+    modal: true,
+    autoOpen: false
+  })
