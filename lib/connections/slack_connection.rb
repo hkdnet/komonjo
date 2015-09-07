@@ -33,6 +33,12 @@ module Komonjo
         ret['members']
       end
 
+      def channels_list
+        ret = Slack.channels_list
+        fail 'error' unless ret['ok']
+        ret['channels']
+      end
+
       private
 
       def auth_test
