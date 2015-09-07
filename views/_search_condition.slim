@@ -7,7 +7,10 @@ form.search_condition action="/" method="post"
     .channel_name
       label for="channel_name"
         .inline-block channel_name
-      input#channel_name name="channel_name" value=(@channel_name || "")
+      select#channel_name name="channel_name" value=(@channel_name || "")
+        - @channels.each do |c|
+          option value=c selected=(c == @channel_name)
+            = c
   .buttons.inline-block
     button#submit type="submit"
       | search
