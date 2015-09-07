@@ -7,6 +7,7 @@ require 'coffee-script'
 require_relative 'lib/mocks/slack_mock'
 require_relative 'lib/connections/slack_connection'
 require_relative 'lib/services/messages_service'
+require_relative 'lib/services/channels_service'
 
 module Komonjo
   # routing
@@ -32,6 +33,13 @@ module Komonjo
 
     get '/' do
       @api_token = ENV['TEST_API_TOKEN'] || ''
+      if @api_token != ''
+        channels_service = Komonjo::Service::ChannelsService.new(@api_token)
+        @channels = channels_service.channels.map(&:name)
+      else
+        @channels = []
+      end
+      p @channels
       @messages = Komonjo::Mock::SlackMock.chat_logs
       slim :index
     end
@@ -39,8 +47,10 @@ module Komonjo
     post '/' do
       @api_token = params[:api_token]
       @channel_name = params[:channel_name]
-      service = Komonjo::Service::MessagesService.new(@api_token)
-      @messages = service.messages @channel_name
+      channels_service = Komonjo::Service::ChannelsService.new(@api_token)
+      @channels = channels_service.channels.map(&:name)
+      messages_service = Komonjo::Service::MessagesService.new(@api_token)
+      @messages = messages_service.messages @channel_name
       slim :index
     end
   end
