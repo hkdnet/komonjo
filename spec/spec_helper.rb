@@ -7,7 +7,7 @@ require 'minitest/power_assert'
 
 Dotenv.load
 
-libs = %w(connections gateways mocks models)
+libs = %w(connections gateways mocks models services)
 libs.each do |ns|
   Dir[File.expand_path("../../lib/#{ns}", __FILE__) << '/*.rb'].each do |file|
     require file
