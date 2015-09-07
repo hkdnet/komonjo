@@ -4,8 +4,8 @@ module Komonjo
     module MessagesGatewayTest
       describe 'find_user' do
         it 'should return a user by id' do
-          users = Komonjo::Mock::SlackMock.users
-          history = Komonjo::Mock::SlackMock.history 'test'
+          users = Komonjo::Mock::SlackMock.users_list
+          history = Komonjo::Mock::SlackMock.channels_history 'test'
           u1 = users[0]
           id = u1[:id]
           g = Komonjo::Gateway::MessagesGateway.new history, users
@@ -15,8 +15,8 @@ module Komonjo
         end
 
         it 'should throw exception with unknown user_id' do
-          users = Komonjo::Mock::SlackMock.users
-          history = Komonjo::Mock::SlackMock.history 'test'
+          users = Komonjo::Mock::SlackMock.users_list
+          history = Komonjo::Mock::SlackMock.channels_history 'test'
           g = Komonjo::Gateway::MessagesGateway.new history, users
           begin
             g.send :find_user, 'unknown_id'
@@ -30,8 +30,8 @@ module Komonjo
 
       describe 'messages' do
         it 'should embed users to messages' do
-          users = Komonjo::Mock::SlackMock.users
-          history = Komonjo::Mock::SlackMock.history 'test'
+          users = Komonjo::Mock::SlackMock.users_list
+          history = Komonjo::Mock::SlackMock.channels_history 'test'
           g = Komonjo::Gateway::MessagesGateway.new history, users
           g.messages.each do |e|
             assert { e.class == Komonjo::Model::Message }
