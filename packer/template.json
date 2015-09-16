@@ -32,15 +32,7 @@
             "type": "shell",
             "scripts": [
                 "scripts/ruby.sh"
-            ],
-            "override": {
-                "virtualbox-iso": {
-                    "execute_command": "echo 'vagrant'| bash '{{.Path}}'"
-                },
-                "vmware-iso": {
-                    "execute_command": "echo 'vagrant'| bash '{{.Path}}'"
-                }
-            }
+            ]
         }
     ],
     "builders": [
@@ -111,7 +103,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.1"
+                "version": "0.0.2"
             }
         },
         {
@@ -121,7 +113,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.1"
+                "version": "0.0.2"
             }
         }]
     ]
