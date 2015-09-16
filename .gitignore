@@ -72,3 +72,4 @@ build/
 
 # vagrant
 .vagrant
+vagrant/
