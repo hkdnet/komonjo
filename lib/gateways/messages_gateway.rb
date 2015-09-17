@@ -1,6 +1,7 @@
 require_relative '../models/user'
 require_relative '../models/message'
 require_relative '../extensions/hash_extensions'
+require 'cgi'
 
 module Komonjo
   module Gateway
@@ -21,6 +22,7 @@ module Komonjo
           next e unless e[:user]
           Komonjo::Model::Message.create(e).tap do |message|
             message.user = find_user(e[:user])
+            message.text = CGI.unescapeHTML(message.text)
           end
         end
       end
