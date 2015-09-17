@@ -2,7 +2,7 @@ module KomonjoTest
   module Model
     # test for Komonjo::Connection::SlackConnection
     module SlackConnectionTest
-      api_token = ENV['TEST_API_TOKEN']
+      api_token = ENV['KOMONJO_SLACK_API_TOKEN']
       unless api_token
         fail 'Please set api token before testing.' \
           'The token should be written in .env at project root.'

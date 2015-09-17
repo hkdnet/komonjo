@@ -6,8 +6,8 @@ module KomonjoTest
         describe 'connection' do
           it 'should set param to Slack.token' do
             service = Komonjo::Service::SlackService.new
-            connection = service.connection(ENV['TEST_API_TOKEN'])
-            assert { connection.api_token == ENV['TEST_API_TOKEN'] }
+            connection = service.connection(ENV['KOMONJO_SLACK_API_TOKEN'])
+            assert { connection.api_token == ENV['KOMONJO_SLACK_API_TOKEN'] }
           end
         end
       end
