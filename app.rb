@@ -32,7 +32,7 @@ module Komonjo
     end
 
     get '/' do
-      @api_token = ENV['TEST_API_TOKEN'] || ''
+      @api_token = ENV['KOMONJO_SLACK_API_TOKEN'] || ''
       if @api_token != ''
         channels_service = Komonjo::Service::ChannelsService.new(@api_token)
         @channels = channels_service.channels.map(&:name)
