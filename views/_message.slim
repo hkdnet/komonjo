@@ -6,4 +6,5 @@ li.message data-md=message.to_markdown
       .message-username.table-cell = message.user.name
       .message-timestamp.table-cell = message.timestamp
       end
-    .message-text = message.text
+    .message-text
+      pre = message.text
