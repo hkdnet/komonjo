@@ -10,6 +10,7 @@ html
     link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/overcast/jquery-ui.css"
     script src="//code.jquery.com/jquery-2.1.4.min.js" async
     script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" async
+    script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"
     script src="scripts/index.js" defer
 
 body
@@ -29,5 +30,7 @@ body
       ul
   #viewer
     textarea#markdown
+    button#copy data-clipboard-text="hoge"
+      | copy
 
 include _footer

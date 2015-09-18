@@ -44,6 +44,9 @@ $ ->
             .text('select messages and push add button')
     .trigger 'Komonjo.change'
 
+  setupCopyButton = (id) ->
+    new ZeroClipboard( document.getElementById(id) )
+
   $('#show').on 'click', () ->
     msg = ''
     $messages = $('#dst li')
@@ -57,6 +60,8 @@ $ ->
       height: Math.min(window.innerHeight * 0.8, 400)
     })
     $('#viewer').dialog("open")
+    $('#copy').attr('data-clipboard-text', msg)
+    setupCopyButton('copy')
     false
 
   $('#viewer').dialog({
