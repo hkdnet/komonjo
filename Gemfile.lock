@@ -1,8 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (4.2.3)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     backports (3.6.5)
+    builder (3.2.2)
     chunky_png (1.3.4)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -19,8 +32,11 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     docile (1.1.5)
     dotenv (2.0.2)
+    equalizer (0.0.11)
     eventmachine (1.0.7)
     execjs (2.5.2)
     faraday (0.9.1)
@@ -31,15 +47,33 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     ffi (1.9.9)
+    grape (0.12.0)
+      activesupport
+      builder
+      hashie (>= 2.1.0)
+      multi_json (>= 1.3.2)
+      multi_xml (>= 0.5.2)
+      rack (>= 1.3.0)
+      rack-accept
+      rack-mount
+      virtus (>= 1.0.0)
+    hashie (3.4.2)
+    i18n (0.7.0)
+    ice_nine (0.11.1)
     json (1.8.3)
     minitest (5.7.0)
     minitest-power_assert (0.2.0)
       minitest
       power_assert
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     power_assert (0.2.4)
     rack (1.6.4)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
+    rack-mount (0.8.3)
+      rack (>= 1.0.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -73,7 +107,15 @@ GEM
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     temple (0.7.6)
+    thread_safe (0.3.5)
     tilt (2.0.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     websocket-driver (0.6.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -85,6 +127,7 @@ DEPENDENCIES
   coffee-script
   compass
   dotenv
+  grape
   minitest-power_assert
   simplecov
   sinatra (= 1.4.6)
