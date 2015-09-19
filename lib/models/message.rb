@@ -1,10 +1,15 @@
 require_relative './user'
+require_relative '../extensions/to_json'
 
 module Komonjo
   module Model
     # slacke Message
     class Message
+      include Komonjo::Extension::ToJson
       attr_accessor :type, :channel, :user, :text, :ts, :edited, :subtype
+      # for jsonize
+      attr_reader :markdown
+      alias_method :to_json_org, :to_json
 
       def self.create(hash)
         new.tap do |e|
@@ -34,6 +39,11 @@ module Komonjo
 
       def text_markdown
         "\t- #{@text}\n"
+      end
+
+      def to_json(*args)
+        @markdown = to_markdown
+        to_json_org(args)
       end
     end
   end

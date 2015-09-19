@@ -8,10 +8,14 @@ require_relative 'lib/mocks/slack_mock'
 require_relative 'lib/connections/slack_connection'
 require_relative 'lib/services/messages_service'
 require_relative 'lib/services/channels_service'
+require_relative 'api'
+require_relative 'mount'
 
 module Komonjo
   # routing
   class App < Sinatra::Base
+    register Sinatra::Mount
+
     configure :development do
       register Sinatra::Reloader
       require 'dotenv'
@@ -31,6 +35,8 @@ module Komonjo
       coffee :"coffee/#{params[:name]}"
     end
 
+    mount API, '/api/'
+
     get '/' do
       @api_token = ENV['KOMONJO_SLACK_API_TOKEN'] || ''
       if @api_token != ''
@@ -39,7 +45,6 @@ module Komonjo
       else
         @channels = []
       end
-      p @channels
       @messages = Komonjo::Mock::SlackMock.chat_logs
       slim :index
     end
