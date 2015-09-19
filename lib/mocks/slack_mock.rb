@@ -1,4 +1,5 @@
-require_relative '../gateways/messages_gateway'
+require 'lib/gateways/messages_gateway'
+
 module Komonjo
   module Mock
     # Mock for SlackConnection

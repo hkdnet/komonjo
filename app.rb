@@ -4,12 +4,14 @@ require 'slim'
 require 'slim/include'
 require 'compass'
 require 'coffee-script'
-require_relative 'lib/mocks/slack_mock'
-require_relative 'lib/connections/slack_connection'
-require_relative 'lib/services/messages_service'
-require_relative 'lib/services/channels_service'
-require_relative 'api'
-require_relative 'mount'
+
+require 'lib/app/api'
+require 'lib/app/mount'
+
+require 'lib/mocks/slack_mock'
+require 'lib/connections/slack_connection'
+require 'lib/services/messages_service'
+require 'lib/services/channels_service'
 
 module Komonjo
   # routing

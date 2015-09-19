@@ -1,5 +1,5 @@
 require 'grape'
-require_relative 'lib/models/api/response_base'
+require 'lib/models/api/response_base'
 
 # API class
 class API < Grape::API

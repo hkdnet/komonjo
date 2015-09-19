@@ -1,5 +1,5 @@
-require_relative './profile'
-require_relative '../extensions/to_json'
+require 'lib/models/profile'
+require 'lib/extensions/to_json'
 
 module Komonjo
   module Model

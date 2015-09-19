@@ -1,6 +1,6 @@
-require_relative './slack_service'
-require_relative '../connections/slack_connection'
-require_relative '../gateways/messages_gateway'
+require 'lib/services/slack_service'
+require 'lib/connections/slack_connection'
+require 'lib/gateways/messages_gateway'
 
 module Komonjo
   module Service
