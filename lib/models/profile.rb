@@ -1,4 +1,4 @@
-require_relative '../extensions/to_json'
+require 'lib/extensions/to_json'
 
 module Komonjo
   module Model

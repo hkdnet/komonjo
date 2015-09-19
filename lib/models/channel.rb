@@ -1,4 +1,4 @@
-require_relative './user'
+require 'lib/models/user'
 
 module Komonjo
   module Model

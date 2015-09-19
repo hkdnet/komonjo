@@ -1,6 +1,6 @@
-require_relative '../models/user'
-require_relative '../models/message'
-require_relative '../extensions/hash_extensions'
+require 'lib/models/user'
+require 'lib/models/message'
+require 'lib/extensions/hash_extensions'
 require 'cgi'
 
 module Komonjo

@@ -1,4 +1,4 @@
-require_relative '../connections/slack_connection'
+require 'lib/connections/slack_connection'
 
 module Komonjo
   module Service
