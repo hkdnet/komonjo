@@ -1,5 +1,5 @@
-require_relative '../models/channel'
-require_relative '../extensions/hash_extensions'
+require 'lib/models/channel'
+require 'lib/extensions/hash_extensions'
 
 module Komonjo
   module Gateway
