@@ -5,18 +5,16 @@ require 'slim/include'
 require 'compass'
 require 'coffee-script'
 
-require 'lib/app/api'
-require 'lib/app/mount'
-
 require 'lib/mocks/slack_mock'
 require 'lib/connections/slack_connection'
 require 'lib/services/messages_service'
 require 'lib/services/channels_service'
+require 'lib/models/api/response_base'
 
 module Komonjo
   # routing
   class App < Sinatra::Base
-    register Sinatra::Mount
+    enable :sessions
 
     configure :development do
       register Sinatra::Reloader
@@ -37,7 +35,45 @@ module Komonjo
       coffee :"coffee/#{params[:name]}"
     end
 
-    mount API, '/api/'
+    post '/api/login' do
+      res = Komonjo::Model::API::ResponseBase.new
+      api_token = params[:api_token] || ''
+      if api_token != ''
+        session[:api_token] = api_token
+      else
+        res.ok = false
+        res.message = 'ERROR: api_token is required.'
+      end
+      res.to_json
+    end
+
+    get '/api/channels' do
+      res = Komonjo::Model::API::ResponseBase.new
+      puts session[:api_token]
+      api_token = session[:api_token] || ''
+      if !api_token.nil? && api_token != ''
+        channels_service = Komonjo::Service::ChannelsService.new(api_token)
+        res.data = channels_service.channels.map(&:name)
+      else
+        res.ok = false
+        res.message = 'ERROR: api_token is required.'
+      end
+      res.to_json
+    end
+
+    get '/api/messages' do
+      res = Komonjo::Model::API::ResponseBase.new
+      api_token = session[:api_token] || ''
+      channel_name = params[:channel_name] || ''
+      if api_token != '' && channel_name != ''
+        messages_service = Komonjo::Service::MessagesService.new(api_token)
+        res.data = messages_service.messages(channel_name)
+      else
+        res.ok = false
+        res.message = 'ERROR: api_token and channel_name are required.'
+      end
+      res.to_json
+    end
 
     get '/' do
       @api_token = ENV['KOMONJO_SLACK_API_TOKEN'] || ''
