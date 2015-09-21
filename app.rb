@@ -55,6 +55,7 @@ module Komonjo
     end
 
     get '/api/channels' do
+      content_type :json
       res = Komonjo::Model::API::ResponseBase.new
       puts session[:api_token]
       api_token = session[:api_token] || ''
@@ -69,6 +70,7 @@ module Komonjo
     end
 
     get '/api/messages' do
+      content_type :json
       res = Komonjo::Model::API::ResponseBase.new
       api_token = session[:api_token] || ''
       channel_name = params[:channel_name] || ''
