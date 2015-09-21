@@ -10,7 +10,6 @@ module Komonjo
         Slack.configure do |config|
           config.token = @api_token
         end
-        fail 'connection error' unless auth_test
       end
 
       def channels_history(channel_name)
@@ -39,12 +38,12 @@ module Komonjo
         ret['channels']
       end
 
-      private
-
       def auth_test
         ret = Slack.auth_test
         ret['ok']
       end
+
+      private
 
       def channel_id(channel_name)
         channel_list = Slack.channels_list

@@ -6,9 +6,9 @@ require 'compass'
 require 'coffee-script'
 
 require 'lib/mocks/slack_mock'
-require 'lib/connections/slack_connection'
 require 'lib/services/messages_service'
 require 'lib/services/channels_service'
+require 'lib/services/login_service'
 require 'lib/models/api/response_base'
 
 module Komonjo
@@ -36,10 +36,17 @@ module Komonjo
     end
 
     post '/api/login' do
+      content_type :json
       res = Komonjo::Model::API::ResponseBase.new
       api_token = params[:api_token] || ''
       if api_token != ''
-        session[:api_token] = api_token
+        service = Komonjo::Service::LoginService.new(api_token)
+        if service.login
+          session[:api_token] = api_token
+        else
+          res.ok = false
+          res.message = 'ERROR: api_token is invalid.'
+        end
       else
         res.ok = false
         res.message = 'ERROR: api_token is required.'
