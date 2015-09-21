@@ -6,12 +6,18 @@ html
     link rel="stylesheet" href="css/base.css" type="text/css"
     link rel="stylesheet" href="css/message.css" type="text/css"
     link rel="stylesheet" href="css/search_condition.css" type="text/css"
-    link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
     link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/overcast/jquery-ui.css"
+    link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"
+    script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js" async
+    script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"
     script src="//code.jquery.com/jquery-2.1.4.min.js" async
     script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" async
     script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"
+    script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"
     script src="scripts/index.js" defer
+    script type="text/jsx" src="scripts/reactify.js" async
+    script src="scripts/toastr.settings.js" async
 
 body
   h1 Komonjo
@@ -32,5 +38,6 @@ body
     textarea#markdown
     button#copy data-clipboard-text="hoge"
       | copy
+  div#react
 
 include _footer
