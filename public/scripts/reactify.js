@@ -8,6 +8,12 @@ var LoginButton = React.createClass({
   }
 });
 var LoginRow = React.createClass({
+  getInitialState: function() {
+    client.login().then(function(d) {
+      this.setState({token: d.data});
+    }.bind(this));
+    return {token: ''};
+  },
   handleClick: function(e) {
     e.preventDefault();
     toastr.info('Processing...', 'login');
@@ -22,7 +28,7 @@ var LoginRow = React.createClass({
     return(
       <div>
         <span>Slack API Token: </span>
-        <input ref="token" type="password" />
+        <input ref="token" type="password" value={this.state.token}/>
         <LoginButton onClick={this.handleClick} />
       </div>
     )

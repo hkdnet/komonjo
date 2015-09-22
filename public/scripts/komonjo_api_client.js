@@ -26,7 +26,11 @@ var Client = function() {
     })
   }
   this.login = function(api_token) {
-    return base('/api/login', 'POST', {api_token: api_token})
+    if(api_token) {
+      return base('/api/login', 'POST', {api_token: api_token});
+    } else {
+      return base('/api/login', 'GET');
+    }
   };
   this.channels = function() {
     return base('/api/channels', 'GET');

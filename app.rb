@@ -35,6 +35,13 @@ module Komonjo
       coffee :"coffee/#{params[:name]}"
     end
 
+    get '/api/login' do
+      content_type :json
+      res = Komonjo::Model::API::ResponseBase.new
+      res.data = session[:api_token]
+      res.to_json
+    end
+
     post '/api/login' do
       content_type :json
       res = Komonjo::Model::API::ResponseBase.new
