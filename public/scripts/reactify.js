@@ -12,15 +12,11 @@ var LoginRow = React.createClass({
     e.preventDefault();
     toastr.info('Processing...', 'login');
     var token = React.findDOMNode(this.refs.token).value;
-    $.post("/api/login", { api_token : token }, "JSON").then(function(d) {
-      if(d.ok) {
-        toastr.success('logged in', 'login');
-      } else {
-        toastr.error(d.message, 'login');
-      }
-    }, function(d) {
-      toastr.erro('Sorry, something went wrong...', 'login');
-    })
+    var afterLogin = this.props.afterLogin || function() {};
+    client.login(token).then(function(d) {
+      toastr.success('logged in', 'login');
+      afterLogin();
+    });
   },
   render: function() {
     return(
@@ -37,7 +33,7 @@ var ChannelButton = React.createClass({
   render: function() {
     return(
       <li className="channel-button">
-        <span className="fa fa-television" />
+        <i className="fa fa-television" />
         <span>
           {this.props.channelName}
         </span>
@@ -61,14 +57,18 @@ var ChannelRow = React.createClass({
 })
 var MenuColumn = React.createClass({
   getChannels: function() {
-    var channels = ["hoge", "fuga", "piyo"];
-    return channels;
+    client.channels().then(function(d) {
+      this.setState({data : d.data});
+    }.bind(this));
+  },
+  getInitialState: function() {
+    return {data: []};
   },
   render: function() {
     return(
       <div className="menu-column">
-        <LoginRow />
-        <ChannelRow channels={this.getChannels()} />
+        <LoginRow afterLogin={this.getChannels}/>
+        <ChannelRow channels={this.state.data} />
       </div>
     );
   }
