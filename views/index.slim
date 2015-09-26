@@ -1,11 +1,9 @@
 doctype html
 html
   head
-    title Komonjo
     include _meta
-    link rel="stylesheet" href="css/base.css" type="text/css"
-    link rel="stylesheet" href="css/message.css" type="text/css"
-    link rel="stylesheet" href="css/search_condition.css" type="text/css"
+    title Komonjo
+    link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"
     link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
     link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/overcast/jquery-ui.css"
     link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"
@@ -15,30 +13,34 @@ html
     script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" async
     script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"
     script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"
+    script src="scripts/bootstrap.min.js" async
     script src="scripts/index.js" defer
     script src="scripts/komonjo_api_client.js" async
     script type="text/jsx" src="scripts/reactify.js" async
     script src="scripts/toastr.settings.js" async
 
-body
-  h1 Komonjo
-  include _search_condition
-  #editor
-    #src.messages.inline-block.scroll
-      ul
-        - @messages.each do |message|
-          include _message
-    #console.inline-block
-      button#add
-        i.fa.fa-arrow-right
-      button#remove
-        i.fa.fa-arrow-left
-    #dst.messages.inline-block.scroll
-      ul
-  #viewer
-    textarea#markdown
-    button#copy data-clipboard-text="hoge"
-      | copy
-  div#react
+body.container
+  .page-header
+    h1 Komonjo
+  div style="display:none;"
+    include _search_condition
+    #editor
+      #src.messages.inline-block.scroll
+        ul
+          - @messages.each do |message|
+            include _message
+      #console.inline-block
+        button#add
+          i.fa.fa-arrow-right
+        button#remove
+          i.fa.fa-arrow-left
+      #dst.messages.inline-block.scroll
+        ul
+    #viewer
+      textarea#markdown
+      button#copy data-clipboard-text="hoge"
+        | copy
+  .row
+    div#react.col-md-10
 
 include _footer
