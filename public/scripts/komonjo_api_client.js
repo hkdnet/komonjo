@@ -34,6 +34,9 @@ var Client = function() {
   this.channels = function() {
     return base('/api/channels', 'GET');
   };
+  this.messages = function(channel_name) {
+    return base('/api/messages', 'GET', {channel_name: channel_name})
+  };
 };
 
 var client = new Client();

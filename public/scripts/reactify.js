@@ -161,7 +161,12 @@ var KomonjoScreen = React.createClass({
     };
   },
   afterSelectChannel: function(d) {
-    d.messages = [1, 2, 3];
+    client.messages(d.channelName).then(function(data) {
+      this.setState({
+        channelName: d.channelName,
+        messages: data.data
+      });
+    }.bind(this));
     this.setState(d);
   },
   getChannels: function() {
