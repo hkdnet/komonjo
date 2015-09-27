@@ -75,19 +75,11 @@ var ChannelRow = React.createClass({
   }
 })
 var MenuColumn = React.createClass({
-  getChannels: function() {
-    client.channels().then(function(d) {
-      this.setState(d);
-    }.bind(this));
-  },
-  getInitialState: function() {
-    return {data: []};
-  },
   render: function() {
     return(
       <div className="col-md-3 column menu-column">
-        <LoginRow afterLogin={this.getChannels}/>
-        <ChannelRow channels={this.state.data}
+        <LoginRow afterLogin={this.props.afterLogin}/>
+        <ChannelRow channels={this.props.channels}
           channelName={this.props.channelName}
           afterSelectChannel={this.props.afterSelectChannel}/>
       </div>
@@ -163,16 +155,26 @@ var ViewerColumn = React.createClass({
 var KomonjoScreen = React.createClass({
   getInitialState: function() {
     return {
-      channelName: ''
+      channelName: '',
+      channels: []
     };
   },
   afterSelectChannel: function(d) {
     this.setState(d);
   },
+  getChannels: function() {
+    client.channels().then(function(d) {
+      this.setState({
+        channels: d.data
+      });
+    }.bind(this));
+  },
   render: function() {
     return(
       <div className="row komonjo-screen">
         <MenuColumn afterSelectChannel={this.afterSelectChannel}
+          afterLogin={this.getChannels}
+          channels={this.state.channels}
           channelName={this.state.channelName} />
         <ViewerColumn channelName={this.state.channelName} />
       </div>
