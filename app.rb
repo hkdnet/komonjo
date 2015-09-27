@@ -64,14 +64,13 @@ module Komonjo
     get '/api/channels' do
       content_type :json
       res = Komonjo::Model::API::ResponseBase.new
-      puts session[:api_token]
       api_token = session[:api_token] || ''
-      if !api_token.nil? && api_token != ''
+      if api_token != ''
         channels_service = Komonjo::Service::ChannelsService.new(api_token)
         res.data = channels_service.channels.map(&:name)
       else
         res.ok = false
-        res.message = 'ERROR: api_token is required.'
+        res.message = 'ERROR: you have not logged in.'
       end
       res.to_json
     end
