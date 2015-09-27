@@ -63,7 +63,8 @@ var ChannelRow = React.createClass({
   render: function() {
     var channelButtons = this.props.channels.map(function(e) {
       return(
-        <ChannelButton channelName={e} selected={e == this.props.channelName}
+        <ChannelButton channelName={e} key={e}
+          selected={e == this.props.channelName}
           afterSelectChannel={this.props.afterSelectChannel} />
       )
     }.bind(this));
@@ -129,7 +130,7 @@ var Messages = React.createClass({
   render: function() {
     var messages = this.props.messages.map(function(e){
       return (
-        <Message />
+        <Message key={arguments[1]} />
       )
     });
     return(
