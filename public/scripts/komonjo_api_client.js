@@ -14,17 +14,16 @@ var Client = function() {
       default:
         throw new Error('unknown method');
     }
-    return dfd.then(function(d) {
+    return dfd.fail(function() {
+      toastr.error('Sorry, something went wrong...')
+    }).then(function(d) {
       if(d.ok) {
         return d;
       }
       toastr.error(d.message);
-      // stopしたい……
-    }, function() {
-      toastr.error('Sorry, something went wrong...')
-      return false;
-    })
-  }
+      throw new Error('bad request');
+    });
+  };
   this.login = function(api_token) {
     if(api_token) {
       return base('/api/login', 'POST', {api_token: api_token});
