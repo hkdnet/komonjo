@@ -17,7 +17,7 @@ var LoginRow = React.createClass({
   handleClick: function(e) {
     e.preventDefault();
     toastr.info('Processing...', 'login');
-    var token = this.state.token;
+    var token = this.state.data;
     var afterLogin = this.props.afterLogin || function() {};
     client.login(token).then(function(d) {
       toastr.success('logged in', 'login');
