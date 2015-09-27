@@ -104,7 +104,7 @@ var MessageIcon = React.createClass({
 var MessageHeader = React.createClass({
   render: function() {
     return(
-      <div className="message-header row">
+      <div className="col-md-12 message-header row">
         <div className="message-username col-md-4">{this.props.name}</div>
         <div className="message-timestamp col-md-8">{this.props.ts}</div>
       </div>
@@ -114,12 +114,12 @@ var MessageHeader = React.createClass({
 var Message = React.createClass({
   render: function() {
     return (
-      <div className="message" data-md="">
+      <div className="row message" data-md="">
         <MessageIcon src="https://avatars.slack-edge.com/2015-07-20/7916335493_befb8f27e45d5ccade4b_48.jpg" />
-        <div className="col-md-6">
+        <div className="row col-md-10">
           <MessageHeader name="name001" ts="70/01/01 00:00:00"/>
-          <div className="row message-text">
-            <pre className="col-md-12">Hello, world</pre>
+          <div className="col-md-12 message-text">
+            <pre className="">Hello, world</pre>
           </div>
         </div>
       </div>
