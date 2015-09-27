@@ -127,8 +127,7 @@ var Messages = React.createClass({
     })
   },
   render: function() {
-    var arr = [0, 1, 2];
-    var messages = arr.map(function(e){
+    var messages = this.props.messages.map(function(e){
       return (
         <Message />
       )
@@ -147,7 +146,7 @@ var ViewerColumn = React.createClass({
         <h2>
           {this.props.channelName}
         </h2>
-        <Messages />
+        <Messages messages={this.props.messages} />
       </div>
     )
   }
@@ -156,10 +155,12 @@ var KomonjoScreen = React.createClass({
   getInitialState: function() {
     return {
       channelName: '',
-      channels: []
+      channels: [],
+      messages: []
     };
   },
   afterSelectChannel: function(d) {
+    d.messages = [1, 2, 3];
     this.setState(d);
   },
   getChannels: function() {
@@ -176,7 +177,8 @@ var KomonjoScreen = React.createClass({
           afterLogin={this.getChannels}
           channels={this.state.channels}
           channelName={this.state.channelName} />
-        <ViewerColumn channelName={this.state.channelName} />
+        <ViewerColumn channelName={this.state.channelName}
+          messages={this.state.messages}/>
       </div>
     )
   }
