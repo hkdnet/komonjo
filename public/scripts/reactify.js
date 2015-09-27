@@ -52,7 +52,7 @@ var ChannelButton = React.createClass({
     return(
       <li className="list-unstyled channel-button" onClick={this.handleClick} >
         <i className="fa fa-television" />
-        <span>
+        <span className={this.props.selected ? 'bg-success' : ''}>
           {this.props.channelName}
         </span>
       </li>
@@ -61,12 +61,12 @@ var ChannelButton = React.createClass({
 });
 var ChannelRow = React.createClass({
   render: function() {
-    var afterSelectChannel = this.props.afterSelectChannel;
     var channelButtons = this.props.channels.map(function(e) {
       return(
-        <ChannelButton channelName={e} afterSelectChannel={afterSelectChannel} />
+        <ChannelButton channelName={e} selected={e == this.props.channelName}
+          afterSelectChannel={this.props.afterSelectChannel} />
       )
-    });
+    }.bind(this));
     return(
       <ul className="channel-buttons">
         {channelButtons}
@@ -87,7 +87,9 @@ var MenuColumn = React.createClass({
     return(
       <div className="col-md-3 column menu-column">
         <LoginRow afterLogin={this.getChannels}/>
-        <ChannelRow channels={this.state.data} afterSelectChannel={this.props.afterSelectChannel}/>
+        <ChannelRow channels={this.state.data}
+          channelName={this.props.channelName}
+          afterSelectChannel={this.props.afterSelectChannel}/>
       </div>
     );
   }
@@ -170,7 +172,8 @@ var KomonjoScreen = React.createClass({
   render: function() {
     return(
       <div className="row komonjo-screen">
-        <MenuColumn afterSelectChannel={this.afterSelectChannel} />
+        <MenuColumn afterSelectChannel={this.afterSelectChannel}
+          channelName={this.state.channelName} />
         <ViewerColumn channelName={this.state.channelName} />
       </div>
     )
